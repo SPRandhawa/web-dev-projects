@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login & Signup with OTP & Password Creation</title>
+
+  <!-- =======================
+       INTERNAL CSS STYLING
+       ======================= -->
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif;
+      background: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Auth box container */
+    .auth-box {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* Form layout */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Input fields */
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* Buttons */
+    button {
+      padding: 10px;
+      background-color: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+
+    /* Section divider */
+    .section-divider {
+      text-align: center;
+      margin: 18px 0;
+      font-weight: bold;
+      color: #666;
+    }
+
+    /* OTP field styling */
+    .otp-field label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .otp-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .otp-row input[type="text"] {
+      flex: 1;
+    }
+
+    #getOtpBtn {
+      padding: 10px 15px;
+      background-color: #28a745;
+      border-radius: 4px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #getOtpBtn:hover {
+      background-color: #1e7e34;
+    }
+
+    /* Modal styles */
+    .modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .modal-content input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* Password rules inside modal */
+    .password-rules {
+      text-align: left;
+      margin: 15px 0;
+      font-size: 0.9rem;
+    }
+
+    .password-rules ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 0 0;
+    }
+
+    .password-rules li {
+      margin-bottom: 6px;
+      color: red;
+    }
+
+    .password-rules li.valid {
+      color: green;
+      font-weight: 600;
+    }
+
+    .modal-content button {
+      margin-top: 15px;
+      padding: 10px 18px;
+    }
+
+    #passwordError {
+      margin-top: 10px;
+      color: red;
+      font-weight: 600;
+    }
+
+    /* Username modal smaller */
+    #usernameModal .modal-content {
+      max-width: 320px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =========================
+       LOGIN FORM
+       ========================= -->
+  <div class="auth-box">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" placeholder="Email" required />
+      <input type="tel" placeholder="Phone Number" pattern="[0-9]{10}" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+
+  <!-- =========================
+       SIGNUP FORM
+       ========================= -->
+  <div class="auth-box">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <input type="text" placeholder="Full Name" required />
+      <input type="text" placeholder="Username" required />
+      <input type="email" placeholder="Email" required />
+      <input type="number" placeholder="Age" min="1" max="120" required />
+      <select required>
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="tel" placeholder="Mobile Number" pattern="[0-9]{10}" required />
+
+      <!-- OTP section -->
+      <div class="otp-field">
+        <label for="otp">Enter OTP sent to your mobile:</label>
+        <div class="otp-row">
+          <input type="text" id="otp" name="otp" placeholder="Enter OTP" required />
+          <button type="button" id="getOtpBtn" onclick="getOTP()">Get OTP</button>
+        </div>
+      </div>
+
+      <input type="text" placeholder="Security Question Answer" required />
+      <input type="file" accept="image/*" /> <!-- profile picture -->
+
+      <label><input type="checkbox" required /> I accept Terms & Conditions</label>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- =========================
+       PASSWORD MODAL
+       ========================= -->
+  <div class="modal" id="passwordModal">
+    <div class="modal-content">
+      <h3>Create Your Password</h3>
+      <input type="password" id="newPassword" placeholder="Enter password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm password" required />
+
+      <div class="password-rules">
+        <p>Password must contain:</p>
+        <ul>
+          <li id="rule-length" class="invalid">At least 8 characters</li>
+          <li id="rule-uppercase" class="invalid">At least one uppercase letter (A-Z)</li>
+          <li id="rule-lowercase" class="invalid">At least one lowercase letter (a-z)</li>
+          <li id="rule-number" class="invalid">At least one number (0-9)</li>
+          <li id="rule-special" class="invalid">At least one special character (!@#$%^&*)</li>
+        </ul>
+      </div>
+
+      <button onclick="savePassword()">Save Password</button>
+      <button onclick="closeModal()" style="background: #ccc; margin-left: 10px;">Cancel</button>
+      <p id="passwordError"></p>
+    </div>
+  </div>
+
+  <!-- =========================
+       USERNAME MODAL
+       ========================= -->
+  <div class="modal" id="usernameModal">
+    <div class="modal-content">
+      <h3>Your Username</h3>
+      <p id="generatedUsername" style="font-size: 1.2rem; font-weight: bold; color: #333;"></p>
+      <button onclick="proceedToProfile()">OK</button>
+    </div>
+  </div>
+
+  <!-- =========================
+       INTERNAL JAVASCRIPT
+       ========================= -->
+  <script>
+    // -------------------------------
+    // OTP GENERATION
+    // -------------------------------
+    function generateOTP(length = 6) {
+      const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      let otp = '';
+      for (let i = 0; i < length; i++) {
+        otp += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return otp;
+    }
+
+    function getOTP() {
+      const otp = generateOTP();
+      sessionStorage.setItem('generatedOTP', otp);
+      alert('Your OTP is: ' + otp); // demo only; replace with real SMS in production
+    }
+
+    // -------------------------------
+    // PASSWORD MODAL & VALIDATION
+    // -------------------------------
+    const modal = document.getElementById('passwordModal');
+    const newPasswordInput = document.getElementById('newPassword');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const passwordError = document.getElementById('passwordError');
+
+    const rules = {
+      length: document.getElementById("rule-length"),
+      uppercase: document.getElementById("rule-uppercase"),
+      lowercase: document.getElementById("rule-lowercase"),
+      number: document.getElementById("rule-number"),
+      special: document.getElementById("rule-special"),
+    };
+
+    const regex = {
+      uppercase: /[A-Z]/,
+      lowercase: /[a-z]/,
+      number: /[0-9]/,
+      special: /[!@#$%^&*]/,
+    };
+
+    // Live validation for password input
+    newPasswordInput.addEventListener("input", () => {
+      const val = newPasswordInput.value;
+      rules.length.className = val.length >= 8 ? "valid" : "invalid";
+      rules.uppercase.className = regex.uppercase.test(val) ? "valid" : "invalid";
+      rules.lowercase.className = regex.lowercase.test(val) ? "valid" : "invalid";
+      rules.number.className = regex.number.test(val) ? "valid" : "invalid";
+      rules.special.className = regex.special.test(val) ? "valid" : "invalid";
+      passwordError.textContent = "";
+    });
+
+    // Save password function
+    function savePassword() {
+      const pass1 = newPasswordInput.value;
+      const pass2 = confirmPasswordInput.value;
+
+      if (pass1.length < 8) { passwordError.textContent = "Password must be at least 8 characters."; return; }
+      if (!regex.uppercase.test(pass1)) { passwordError.textContent = "Password must contain at least one uppercase letter."; return; }
+      if (!regex.lowercase.test(pass1)) { passwordError.textContent = "Password must contain at least one lowercase letter."; return; }
+      if (!regex.number.test(pass1)) { passwordError.textContent = "Password must contain at least one number."; return; }
+      if (!regex.special.test(pass1)) { passwordError.textContent = "Password must contain at least one special character (!@#$%^&*)."; return; }
+      if (pass1 !== pass2) { passwordError.textContent = "Passwords do not match."; return; }
+
+      alert("Account created successfully!");
+      localStorage.setItem("userPassword", pass1);
+
+      const mobileNumber = document.querySelector('#signupForm input[type="tel"]').value;
+      sessionStorage.setItem("autofillMobile", mobileNumber);
+      sessionStorage.setItem("autofillPassword", pass1);
+
+      closeModal();
+      document.getElementById('signupForm').reset();
+    }
+
+    // Open/Close modal functions
+    function openModal() {
+      modal.style.display = "flex";
+      newPasswordInput.value = "";
+      confirmPasswordInput.value = "";
+      passwordError.textContent = "";
+      for (let key in rules) rules[key].className = "invalid";
+    }
+
+    let closeModal = () => { modal.style.display = "none"; };
+
+    closeModal = (function(originalCloseModal) {
+      return function() {
+        originalCloseModal();
+        const loginMobile = sessionStorage.getItem("autofillMobile");
+        const loginPassword = sessionStorage.getItem("autofillPassword");
+        if (loginMobile) document.querySelector('#loginForm input[type="tel"]').value = loginMobile;
+        if (loginPassword) document.querySelector('#loginForm input[type="password"]').value = loginPassword;
+        sessionStorage.removeItem("autofillMobile");
+        sessionStorage.removeItem("autofillPassword");
+      };
+    })(closeModal);
+
+    // Signup form submit
+    const signupForm = document.getElementById('signupForm');
+    signupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const enteredOtp = document.getElementById('otp').value.trim();
+      const generatedOtp = sessionStorage.getItem('generatedOTP');
+      if (!generatedOtp) { alert('Please get an OTP first!'); return; }
+      if (enteredOtp !== generatedOtp) { alert('Invalid OTP. Please try again.'); return; }
+      openModal();
+    });
+
+    // Login form submit
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = loginForm.querySelector('input[type="email"]').value.trim();
+      const mobile = loginForm.querySelector('input[type="tel"]').value.trim();
+      let username = "";
+      if (email) { username = email.split('@')[0]; }
+      else if (mobile.length >= 4) { username = "user" + mobile.slice(-4); }
+      else { username = "user"; }
+      showUsernameModal(username);
+    });
+
+    // Username modal
+    const usernameModal = document.getElementById('usernameModal');
+    const generatedUsernameElem = document.getElementById('generatedUsername');
+    function showUsernameModal(username) {
+      generatedUsernameElem.textContent = username;
+      usernameModal.style.display = 'flex';
+    }
+    function hideUsernameModal() { usernameModal.style.display = 'none'; }
+    function proceedToProfile() {
+      hideUsernameModal();
+      alert('Redirecting to profile page...');
+    }
+
+    // Close modals when clicking outside modal content
+    window.onclick = function(event) {
+      if (event.target === modal) closeModal();
+      if (event.target === usernameModal) hideUsernameModal();
+    };
+  </script>
+</body>
+</html>
