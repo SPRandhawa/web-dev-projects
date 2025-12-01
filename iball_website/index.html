@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css"> 
+    <style>
+      .nproducts-section {
+            padding: 3rem 0;
+        }
+
+        .nproducts-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .nproduct-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 2.5rem;
+        }
+
+        .nproduct-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nproduct-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .nproduct-card img {
+            width: 100%;
+            height: 650px; /* Fixed height for consistency */
+            object-fit: cover;
+            object-position: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .nproduct-card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .nproduct-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            flex-grow: 0; /* Don't grow to push price down */
+        }
+
+        .nproduct-card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Allows description to take available space */
+        }
+
+        .nproduct-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto; /* Pushes to the bottom */
+        }
+
+        .nproduct-card .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #6a0dad;
+        }
+
+        .nproduct-card .add-to-cart-button {
+            background-color: #007bff; /* Blue button */
+            color: #ffffff;
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .nproduct-card .add-to-cart-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+               
+        } 
+
+    </style>
+</head>
+<body>
+ <div id="intro">
+    <div class="logo">
+      <span class="i-letter">
+        <span class="i-stem">l</span>
+        <span class="i-dot"></span>
+      </span>
+      <span class="ball-text">ball</span>
+    </div>
+  </div>
+
+  <main id="main-content" style="display: none;">
+    
+
+<!-- Full site header -->
+<header class="navbar">
+  <div class="brand">
+    <span class="i-letter">
+      <span class="i-dot"></span>
+      <span class="i-stem">l</span>
+    </span>ball
+  </div>
+
+
+  <nav class="icon-nav">
+    <a href="Untitled-1.html" class="icon-item">
+      <img src="home.png" alt="Home">
+      <div class="icon-label">Home</div>
+    </a>
+    <a href="product.html" class="icon-item">
+      <img src="product.png" alt="Product">
+      <div class="icon-label">Product</div>
+    </a>
+    <a href="blog.html" class="icon-item">
+      <img src="blog.png" alt="Blog">
+      <div class="icon-label">Blog</div>
+    </a>
+    <a href="profile.html" class="icon-item">
+      <img src="profile.png" alt="Profile">
+      <div class="icon-label">Profile</div>
+    </a>
+    <a href="aboutus.html" class="icon-item">
+      <img src="aboutus.png" alt="About Us">
+      <div class="icon-label">About Us</div>
+    </a>
+    <a href="contact.html" class="icon-item">
+      <img src="contact.png" alt="contact">
+      <div class="icon-label">contact</div>
+    </a>
+    <a href="setting.html" class="icon-item">
+      <img src="settings.png" alt="settings">
+      <div class="icon-label">settings</div>
+    </a>
+    <a href="cart.html" class="icon-item">
+      <img src="cart.png" alt="cart">
+      <div class="icon-label">cart</div>
+    </a>
+    <a href="form.html" class="icon-item">
+      <img src="login.png" alt="login form">
+      <div class="icon-label">login form</div>
+    </a>
+   <a href="reward.html" class="icon-item">
+      <img src="reward.png" alt="reward">
+      <div class="icon-label">reward</div>
+    </a>
+
+    <a href="favrouite.html" class="icon-item">
+      <img src="fav.png" alt="favourite">
+      <div class="icon-label">favourite</div>
+    </a>
+  </nav>
+</header>
+ <hr>
+ <section class="search-section">
+  <div class="search-wrapper">
+    <a href="#" class="icon-item" id="search-toggle">
+      <img src="search.png" alt="search">
+      <div class="icon-label">Search</div>
+    </a>
+    <input type="text" id="search-bar" placeholder="Search products..." />
+  </div>
+</section>
+         <section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Welcome to iBall</h1>
+    <p class="hero-tagline">Smart Devices for Smart Living</p>
+    <p class="hero-description">
+      Discover the future of technology with iBall's innovative range of smart gadgets, sound systems, and accessories.
+    </p>
+    <a href="#" class="hero-btn">Explore Products</a>
+  </div>
+
+  <div class="hero-image">
+    <img src="featured.avif" alt="Featured iBall Product" />
+  </div>
+</section>
+
+   <section class="products-section">
+    <h2>🔥 Featured Products</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- Product cards will be generated by JavaScript -->
+    </div>
+    <div class="cart-count" style="text-align:center; margin-top: 2rem; font-weight: bold; font-size: 1.2rem;">
+      🛒 Cart Items: <span id="cartCount">0</span>
+    </div>
+  </section>
+  <section class="solutions-section">
+  <h2>🎯 Find Solutions That Fit You</h2>
+  <div class="solutions-grid">
+    <div class="solution-card">
+      <div class="solution-icon">🎧</div>
+      <h3>For Music Lovers</h3>
+      <p>Explore headphones, speakers, and audio accessories.</p>
+      <a href="#" class="solution-btn">Shop Audio</a>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">💼</div>
+      <h3>For Professionals</h3>
+      <p>Reliable laptops, webcams, and productivity tools.</p>
+      <a href="#" class="solution-btn">Explore Office</a>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">🕹️</div>
+      <h3>For Gamers</h3>
+      <p>Gaming mice, mechanical keyboards, and accessories.</p>
+      <a href="#" class="solution-btn">Game On</a>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">🏠</div>
+      <h3>For Home Use</h3>
+      <p>Smart accessories and devices for everyday needs.</p>
+      <a href="#" class="solution-btn">View Essentials</a>
+    </div>
+  </div>
+</section>
+<section class="brand-value-section">
+  <h2>✨ Why Choose iBall?</h2>
+  <div class="brand-value-grid">
+    <div class="value-card">
+      <div class="value-icon">💡</div>
+      <h3>Innovation</h3>
+      <p>We deliver cutting-edge technology tailored to your modern lifestyle.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🛡️</div>
+      <h3>Reliability</h3>
+      <p>Trusted by millions, our products stand the test of time and performance.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💰</div>
+      <h3>Affordability</h3>
+      <p>Get the best value for money without compromising on quality.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">📞</div>
+      <h3>Support</h3>
+      <p>Responsive customer care and wide service network across India.</p>
+    </div>
+  </div>
+</section>
+<section class="promo-banner">
+  <div class="promo-content">
+    <div class="promo-text">
+      <h2>🔥 Deal of the Day</h2>
+      <p>Grab the latest iBall Bluetooth Speaker at 30% off. Hurry, limited time only!</p>
+      <a href="#" class="promo-btn">Shop Now</a>
+    </div>
+    <div class="promo-image">
+      <img src="https://via.placeholder.com/400x250?text=Bluetooth+Speaker+Deal" alt="Promo Product">
+    </div>
+  </div>
+</section>
+
+ <h2 style="text-align: center;">Grab The Latest Offers Now</h2>
+             <div class="ads-container">
+      <div class="ads-row">
+        <div class="advertisement">
+          <h3>🔥 Flash Sale</h3>
+            <img src="" alt="Sale Banner" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+          <p>Up to <b>60% off</b> on cpu. Limited time!</p>
+        </div>
+        <div class="advertisement">
+          <h3>💃 New Arrivals</h3>
+            <img src="" alt="Sale Banner" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+          <p>Explore the latest trends . And get upto<b>50% off</b></p>
+        </div>
+        <div class="advertisement">
+          <h3>🧒 Kids Special</h3>
+            <img src="" alt="Sale Banner" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+          <p>Colorful and playful keyboards speakers and many more for kids.</p>
+       </div>
+      <div class="advertisement">
+      <h3>🎉 Limited Time Offer!</h3>
+       <img src="" alt="Sale Banner" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+      <p>Enjoy up to <strong>50% OFF</strong> on new Arrival speakers. Shop now before the sale ends!</p>
+        </div>
+          <div class="advertisement">
+      <h3>🎉 Limited Time Offer!</h3>
+       <img src="" alt="Sale Banner" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+      <p>BUY ONE <strong>GET ONE FREE</strong> on all categories. Shop now before the sale ends!</p>
+        </div>
+          <div class="advertisement">
+      <h3>🎉 Limited Time Offer!</h3>
+       <img src="" alt="Sale Banner" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+      <p>Enjoy up to <strong>50% OFF</strong> on all categories. Shop now before the sale ends!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+ <h2 style=" font-size: 2.5rem;font-weight: 700;color: #2c3e50;text-align: center; margin-bottom: 3rem;">Shop by Category</h2>
+
+<div class="row" style="align-content: center;">
+  <div class="ABCcontainer">
+    <a href="#" class="circle-link">
+      <div class="circle">
+        <img src="" alt="tablets">
+      </div>
+      <div class="label">tablets</div>
+    </a>
+
+    <a href="#" class="circle-link">
+      <div class="circle">
+        <img src="" alt="cpu">
+      </div>
+      <div class="label">cpu</div>
+    </a>
+
+    <a href="#" class="circle-link">
+      <div class="circle">
+        <img src="download (1).jfif" alt="headphones">
+      </div>
+      <div class="label">headphones</div>
+    </a>
+   <a href="#" class="circle-link">
+      <div class="circle">
+        <img src="" alt="keyboard">
+      </div>
+      <div class="label">keyboard</div>
+    </a>
+     <a href="#" class="circle-link">
+      <div class="circle">
+        <img src="" alt="mouse">
+      </div>
+      <div class="label">mouse</div>
+    </a>
+     <a href="#" class="circle-link">
+      <div class="circle">
+        <img src="" alt="pendrive">
+      </div>
+      <div class="label">pendrive</div>
+    </a>
+  </div>
+</div><br>
+<section class="nproducts-section">
+            <div class="ncontainer">
+                <h2>festive colletions</h2>
+                <div class="nproduct-grid">
+                    <!-- Product Card 1 -->
+                    <div class="nproduct-card">
+                       <img id="flipbook" src="photo.jfif" alt="Flipbook" width="auto-fit" height="auto-fit" />
+                        <div class="nproduct-card-content">
+                            <h3>cute airpods</h3>
+                            <p>Lightweight and durable, perfect for your daily urban adventures.</p>
+                            <div class="nproduct-card-footer">
+                                <span class="price">$79.99</span>
+                               <button class="add-to-cart-button">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div></a>
+ <!-- Product Card 2 -->
+                    <div class="nproduct-card">
+                        <img id="vflipbook" src="case.jpg" alt="vFlipbook" width="400" height="300" />
+                        <div class="nproduct-card-content">
+                            <h3>phone casecover</h3>
+                            <p>best to fit everwhere.</p>
+                            <div class="nproduct-card-footer">
+                                <span class="price">$45.50</span>
+                                <button class="add-to-cart-button">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div></div></section>
+
+    <span class="sale-badge">SALE</span><br><br><br>
+    <marquee behavior="scroll" direction="left" style="background-color: black;color: white;font-weight: bolder;">
+  <span class="new-badge">NEW</span> Discover the latest iball arrivals.!
+   <span class="new-badge">NEW</span>  Flat 20% off on selected styles – Limited time only!
+    <span class="new-badge">NEW</span>  Arrivals just dropped! Check out the latest headphones styles!
+     <span class="new-badge">NEW</span>  wireless mouse starting at just ₹299 – Shop now!
+        <span class="new-badge">NEW</span> “Free shipping on orders above ₹149.”
+</marquee><br><br>
+     <div class="ads-row">
+        <div class="advertisement" style="margin-left: 20%;">
+          <h3>🔥 Flash Sale</h3>
+            <img src="" alt="Sale" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+          <p>Shop the Sale Now and take the next step in style — for less.</p>
+        </div>
+        <div class="advertisement">
+          <h3>🔥 Flash Sale</h3>
+            <img src="" alt="Sale" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+          <p>get upto 60% off on the keyboard and mouse combo.</p>
+        </div>
+         <div class="advertisement">
+          <h3>🔥 Flash Sale</h3>
+            <img src="" alt="Sale" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+          <p>get upto 90% off on your first purchase.</p>
+        </div>
+        <div class="advertisement">
+          <h3>🔥 Flash Sale</h3>
+            <img src="" alt="Sale" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+          <p>70% off for first ten Customers.on the new arrival of this speaker</p>
+        </div>
+     </div>
+        <div class="chatbot-icon" id="chatbotIcon">
+    💬
+  </div>
+
+  <!-- Chatbot Window -->
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chat-header">
+      ChatBot
+      <span class="close-btn" id="closeChat">×</span>
+    </div>
+    <div class="chat-box" id="chatBox"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+   <br> 
+  
+    <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>iBall</h3>
+      <p>Innovative tech for everyday needs. Trusted by millions across India.</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Warranty</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <p>Email: support@iball.in</p>
+      <p>Phone: +91 1800-123-4567</p>
+      <p>Mon–Fri, 9AM–6PM</p>
+    </div>
+
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><span>🔵</span></a>
+        <a href="#"><span>🐦</span></a>
+        <a href="#"><span>📸</span></a>
+        <a href="#"><span>📘</span></a>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="footer-bottom">
+    <p>© 2025 iBall India. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+  }
+});
+
+</script>
+<script>
+  // Flipbook 1 (Product 1)
+  const photos1 = ['photo.jfif', 'photo1.jpg', 'photo2.jpeg', 'photo3.jfif'];
+  let index1 = 0;
+  const flipbook1 = document.getElementById('flipbook');
+
+  function animateFlipbook1() {
+    flipbook1.src = photos1[index1];
+    index1 = (index1 + 1) % photos1.length;
+    setTimeout(animateFlipbook1, 500); // Adjust frame delay as needed
+  }
+
+  // Flipbook 2 (Product 2)
+  const photos2 = ['case.jpg','case1.jpg','case3.jfif'] // Add your second image set
+  let index2 = 0;
+  const flipbook2 = document.getElementById('vflipbook');
+
+  function animateFlipbook2() {
+    flipbook2.src = photos2[index2];
+    index2 = (index2 + 1) % photos2.length;
+    setTimeout(animateFlipbook2, 500); // Same or different delay
+  }
+
+  // Start both animations
+  animateFlipbook1();
+  animateFlipbook2();
+</script>
+
+
+ <script src="index.js"></script>
+</body>
+</html>
