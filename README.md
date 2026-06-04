@@ -23,6 +23,8 @@ A collection of front-end and full-stack web development projects using HTML, CS
 > 🟢 Public = Fully accessible
 > 🟡 Preview = Not indexed / limited access
 
+---
+
 ## ⚠️ Project Disclaimer
 
 This repository contains a mix of **personal, client-based, and educational projects**. By accessing or viewing any project, you agree to the following terms:
