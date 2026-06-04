@@ -17,7 +17,7 @@ A collection of front-end and full-stack web development projects using HTML, CS
 | - | ----------------- | -------------- | ---------- | ------------------------------ |
 | 1 | Randhawa SkyCast | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://randhawa-skycast.onrender.com/) |
 | 2 | E-commerce UI     | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://your-link.com) |
-| 3 | Randhawa Production Remix | 🎯 Client      | 🟢 Public  | [View](https://sprandhawa.github.io/)  |
+| 3 | Randhawa Production Remix | 🎯 Client      | 🟢 Public  | [Visit](https://sprandhawa.github.io/)  |
 
 > 🧑‍💻 Personal = Built for learning or personal projects
 > 🎯 Client = Built based on client / real-world requirements
