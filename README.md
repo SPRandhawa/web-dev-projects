@@ -19,11 +19,10 @@ A collection of front-end and full-stack web development projects using HTML, CS
 | 3 | Randhawa Production Remix | 🎯 Client | 🟢 Public | [Visit](https://sprandhawa.github.io/auracalendar/) | Client Work |
 | 4 | Relaxo Footwear | 🧑‍💻 Personal | 🟡 Preview | [View](https://footwear-9b4o.onrender.com/index.html) | UI Clone (Non-commercial / For learning only) |
 
-> 🧑‍💻 Personal = Built for learning or personal projects.
-> 🎯 Client = Built based on client / real-world requirements
-> 🟢 Public = Fully accessible
-> 🟡 Preview = Not indexed / limited access
-
+> 🧑‍💻 Personal = Built for learning or personal projects  
+> 🎯 Client = Built based on client / real-world requirements  
+> 🟢 Public = Fully accessible  
+> 🟡 Preview = Not indexed / limited access  
 ---
 
 ## ⚠️ Project Disclaimer
