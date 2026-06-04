@@ -15,7 +15,7 @@ A collection of front-end and full-stack web development projects using HTML, CS
 | # | Project Name      | Type           | Status     | Live Link                      |
 | - | ----------------- | -------------- | ---------- | ------------------------------ |
 | 1 | Randhawa SkyCast | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://randhawa-skycast.onrender.com/) |
-| 2 | AuraCalendar – Smart Event Reminders    | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://your-link.com) |
+| 2 | AuraCalendar – Smart Event Reminders    | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://simjai.pythonanywhere.com/) |
 | 3 | Randhawa Production Remix | 🎯 Client      | 🟢 Public  | [Visit](https://sprandhawa.github.io/auracalendar/)  |
 
 > 🧑‍💻 Personal = Built for learning or personal projects
