@@ -12,10 +12,11 @@ A collection of front-end and full-stack web development projects using HTML, CS
 ---
 ## 🌐 Live Projects
 
-| # | Project Name      | Type           | Status     | Live Link                      | Note | 
-| 1 | Randhawa SkyCast | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://randhawa-skycast.onrender.com/) | Original Project |
-| 2 | AuraCalendar – Smart Event Reminders    | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://simjai.pythonanywhere.com/) | Original Project |
-| 3 | Randhawa Production Remix | 🎯 Client      | 🟢 Public  | [Visit](https://sprandhawa.github.io/auracalendar/)  | Client Work |
+| # | Project Name | Type | Status | Live Link | Note |
+|---|-------------|------|--------|-----------|------|
+| 1 | Randhawa SkyCast | 🧑‍💻 Personal | 🟢 Public | [Visit](https://randhawa-skycast.onrender.com/) | Original Project |
+| 2 | AuraCalendar – Smart Event Reminders | 🧑‍💻 Personal | 🟢 Public | [Visit](https://simjai.pythonanywhere.com/) | Original Project |
+| 3 | Randhawa Production Remix | 🎯 Client | 🟢 Public | [Visit](https://sprandhawa.github.io/auracalendar/) | Client Work |
 | 4 | Relaxo Footwear | 🧑‍💻 Personal | 🟡 Preview | [View](https://footwear-9b4o.onrender.com/index.html) | UI Clone (Non-commercial / For learning only) |
 
 > 🧑‍💻 Personal = Built for learning or personal projects
