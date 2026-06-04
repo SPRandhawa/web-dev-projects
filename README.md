@@ -5,10 +5,10 @@ Each project represents my growth as a front-end developer, combining creativity
 
 “First, solve the problem. Then, write the code.” — John Johnson
 
-🌐 Contents Static and responsive websites (HTML, CSS, JS) Mini projects and UI experiments College and personal web assignments Full-stack or backend integration (in progress) ⚙️ Tech Stack Frontend: HTML, CSS, JavaScript Styling Tools: Bootstrap, Tailwind CSS Backend (optional): Node.js, Express.js Hosting/Version Control: GitHub Pages, Netlify 🚀 Goal To improve my front-end design and development skills, understand modern web practices, and create user-friendly, visually appealing websites.
-<br>
+🌐 Contents Static and responsive websites (HTML, CSS, JS) Mini projects and UI experiments College and personal web assignments Full-stack or backend integration (in progress) ⚙️ Tech Stack Frontend: HTML, CSS, JavaScript Styling Tools: Bootstrap, Tailwind CSS Backend (optional): Node.js, Express.js Hosting/Version Control: GitHub Pages, Netlify,Pythonanywhere,Render etc. 🚀 Goal To improve my front-end design and development skills, understand modern web practices, and create user-friendly, visually appealing websites.
+
 A collection of front-end and full-stack web development projects using HTML, CSS, JavaScript, and modern frameworks.
-<br>
+
 ---
 ## 🌐 Live Projects
 
