@@ -12,14 +12,57 @@ A collection of front-end and full-stack web development projects using HTML, CS
 ---
 ## 🌐 Live Projects
 
-| # | Project Name      | Type           | Status     | Live Link                      |
+| # | Project Name      | Type           | Status     | Live Link                      | Note | 
 | - | ----------------- | -------------- | ---------- | ------------------------------ |
-| 1 | Randhawa SkyCast | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://randhawa-skycast.onrender.com/) |
-| 2 | AuraCalendar – Smart Event Reminders    | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://simjai.pythonanywhere.com/) |
-| 3 | Randhawa Production Remix | 🎯 Client      | 🟢 Public  | [Visit](https://sprandhawa.github.io/auracalendar/)  |
-| 4 | Relaxo Footwear | 🧑‍💻 Personal | 🟡 Preview | [View](https://footwear-9b4o.onrender.com/index.html) 
+| 1 | Randhawa SkyCast | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://randhawa-skycast.onrender.com/) | Original Project |
+| 2 | AuraCalendar – Smart Event Reminders    | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://simjai.pythonanywhere.com/) | Original Project |
+| 3 | Randhawa Production Remix | 🎯 Client      | 🟢 Public  | [Visit](https://sprandhawa.github.io/auracalendar/)  | Client Work |
+| 4 | Relaxo Footwear | 🧑‍💻 Personal | 🟡 Preview | [View](https://footwear-9b4o.onrender.com/index.html) | UI Clone (Non-commercial / For learning only) |
 
 > 🧑‍💻 Personal = Built for learning or personal projects
 > 🎯 Client = Built based on client / real-world requirements
 > 🟢 Public = Fully accessible
 > 🟡 Preview = Not indexed / limited access
+
+## ⚠️ Project Disclaimer
+
+This repository contains a mix of **personal, client-based, and educational projects**. By accessing or viewing any project, you agree to the following terms:
+
+---
+
+### 🔹 Educational / UI Clone Projects
+
+Some projects (e.g., **Relaxo Footwear**) are created **strictly for educational and learning purposes only**.
+
+* They are UI clones or design practice projects
+* They are **not affiliated with or owned by the original brand/company**
+* They are created only to improve frontend development skills
+* No commercial use or real-world representation is intended
+
+---
+
+### 🔹 Client Projects
+
+Projects marked as **Client Work** are developed based on specific requirements.
+
+* These projects are **legally protected under copyright**
+* Unauthorized copying, modification, or reuse of code/design is strictly prohibited
+* These works may not be reused in any form without permission
+
+---
+
+### 🔹 Personal Projects
+
+Projects marked as **Personal** are original works created by the developer.
+
+* Full ownership belongs to the developer
+* **Copying, reusing, or redistributing code/design without permission is not allowed**
+* Inspiration is allowed, but direct duplication is prohibited
+
+---
+
+### ⚠️ Important Notice
+
+All projects in this repository are shared for **portfolio and demonstration purposes only**. Any misuse, unauthorized copying, or commercial reuse of content is strictly discouraged.
+
+📌 This disclaimer applies to all current and future projects in this repository.
