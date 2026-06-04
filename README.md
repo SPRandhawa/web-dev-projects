@@ -9,3 +9,17 @@ Each project represents my growth as a front-end developer, combining creativity
 
 📚 Note Each project folder includes its source code and a brief description. Some projects may also include live demo links hosted via GitHub Pages or Netlify. # web-dev-projects# web-dev-projects
 A collection of front-end and full-stack web development projects using HTML, CSS, JavaScript, and modern frameworks.
+<br>
+---
+## 🌐 Live Projects
+
+| # | Project Name      | Type           | Status     | Live Link                      |
+| - | ----------------- | -------------- | ---------- | ------------------------------ |
+| 1 | Randhawa SkyCast | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://randhawa-skycast.onrender.com/) |
+| 2 | E-commerce UI     | 🧑‍💻 Personal | 🟢 Public  | [Visit](https://your-link.com) |
+| 3 | Randhawa Production Remix | 🎯 Client      | 🟢 Public  | [View](https://sprandhawa.github.io/)  |
+
+> 🧑‍💻 Personal = Built for learning or personal projects
+> 🎯 Client = Built based on client / real-world requirements
+> 🟢 Public = Fully accessible
+> 🟡 Preview = Not indexed / limited access
