@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<section class="container py-3 py-lg-4">
+  <div class="hero-section rounded-4 p-4 p-lg-5 text-center text-lg-start">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <span class="badge rounded-pill bg-white bg-opacity-25 px-3 py-2 mb-3">Professional blogging experience</span>
+        <h1 class="display-5 fw-bold mb-3">Welcome to MediaPost</h1>
+        <p class="lead text-white-50 mb-4">Share your thoughts, stories, and snapshots with a modern interface made for beautiful content.</p>
+        <a href="{% url 'post_create' %}" class="btn btn-light text-primary">Create your first post</a>
+      </div>
+      <div class="col-lg-4">
+        <div class="panel-card p-4 text-start">
+          <h4 class="fw-bold mb-3">Why users love it</h4>
+          <ul class="list-unstyled mb-0 text-muted">
+            <li class="mb-2"><i class="bi bi-pencil-square me-2 text-primary"></i>Clean writing experience</li>
+            <li class="mb-2"><i class="bi bi-images me-2 text-primary"></i>Rich photo support</li>
+            <li><i class="bi bi-people me-2 text-primary"></i>Engaging community feel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="h3 fw-bold mb-1">Recent Posts</h2>
+      <p class="text-muted mb-0">Fresh content from the community</p>
+    </div>
+    <a href="{% url 'post_list' %}" class="btn btn-outline-light">View all posts</a>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for post in posts_ %}
+    <div class="col">
+      <div class="card h-100 border-0 content-card card-hover overflow-hidden">
+        {% if post.photo %}
+        <img src="{{ post.photo.url }}" class="card-img-top post-image" alt="Post image" />
+        {% else %}
+        <div class="placeholder-box m-3">
+          <div class="text-center">
+            <i class="bi bi-image fs-1"></i>
+            <p class="mb-0 mt-2">No image attached</p>
+          </div>
+        </div>
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{ post.user.username }}</h5>
+          <p class="card-text text-muted">{{ post.text }}</p>
+          <p class="card-text text-muted small">{{ post.created_at }}</p>
+        </div>
+
+        {% if post.user == user %}
+        <div class="card-footer border-top-0" style="background: rgba(255,255,255,0.03);">
+          <div class="d-flex justify-content-between">
+            <a href="{% url 'post_edit' post.id %}" class="btn btn-outline-primary btn-sm"><i class="bi bi-pen me-1"></i>Edit</a>
+            <a href="{% url 'post_delete' post.id %}" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash me-1"></i>Delete</a>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <div class="content-card p-4 text-center text-muted">No posts available yet.</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
