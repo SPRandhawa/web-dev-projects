@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Login Page{% endblock %}
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center py-5" style="min-height: 80vh;">
+  <div class="auth-card p-4 p-lg-5" style="width: 100%; max-width: 430px;">
+    <h3 class="text-center mb-4 fw-bold">Login</h3>
+    <p class="text-center text-muted mb-4">Welcome back. Sign in to continue sharing your posts.</p>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="id_username" class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" id="id_username" required>
+      </div>
+      <div class="mb-3">
+        <label for="id_password" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="id_password" required>
+      </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </form>
+
+    <p class="mt-3 text-center text-muted">Don't have an account?
+      <a href="{% url 'register' %}" class="text-decoration-none text-primary">Register here</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
