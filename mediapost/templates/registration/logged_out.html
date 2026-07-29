@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="auth-card p-4 p-lg-5 text-center">
+        <h2 class="fw-bold mb-3">You’ve been logged out</h2>
+        <p class="text-muted mb-4">Thanks for visiting. You can sign in again whenever you’re ready.</p>
+        <a href="{% url 'login' %}" class="btn btn-primary">Login again</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
