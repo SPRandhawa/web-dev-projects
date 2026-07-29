@@ -18,6 +18,7 @@ A collection of front-end and full-stack web development projects using HTML, CS
 | 2 | AuraCalendar – Smart Event Reminders | 🧑‍💻 Personal | 🟢 Public | [Visit](https://simjai.pythonanywhere.com/) | Original Project |
 | 3 | Randhawa Production Remix | 🎯 Client | 🟢 Public | [Visit](https://sprandhawa.github.io/) | Client Work |
 | 4 | Relaxo Footwear | 🧑‍💻 Personal | 🟡 Preview | [View](https://footwear-9b4o.onrender.com/index.html) | UI Clone (Non-commercial / For learning only) |
+| 5 | MediaPost | 🧑‍💻 Personal | 🟡 Preview | [View](https://randhawa.alwaysdata.net/) | Content Platform / Social Media Web Application |
 
 > 🧑‍💻 Personal = Built for learning or personal projects  
 > 🎯 Client = Built based on client / real-world requirements  
