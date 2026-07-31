@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Buy Laptop</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f1f3f6;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #2874f0;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .menu {
+            margin-left: auto;
+        }
+
+        .menu a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #2874f0;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .contact-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f1f3f6;
+            border-radius: 6px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #2874f0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0f5bd3;
+        }
+
+        .note {
+            font-size: 12px;
+            color: gray;
+            margin-top: 10px;
+        }
+
+        .policy {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+
+        /* Footer Styles */
+       .footer {
+    background: #172337;
+    color: white;
+    padding: 30px 20px 10px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">💻 BuyLaptop</div>
+
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="{% url 'emi' %}">EMI</a>
+            <a href="{% url 'compare' %}">Compare</a>
+            <a href="{% url 'accessories' %}">Accessories</a>
+            <a href="{% url 'about' %}">About</a>
+        </div>
+    </div>
+    <div class="container">
+
+        <h1>About Us</h1>
+
+        <p>
+            This website is designed to help users easily explore and compare laptops from different brands and
+            platforms in one place.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+            To make laptop discovery simple, organized, and accessible.
+        </p>
+
+        <h2>Our Vision</h2>
+        <p>
+            To provide a reliable platform where users can find the right laptop without searching multiple websites.
+        </p>
+
+        <h2>Key Features</h2>
+        <ul>
+            <li>Browse laptops by category and brand</li>
+            <li>View featured and best-selling products</li>
+            <li>Check availability across Amazon and Flipkart</li>
+            <li>Simple and clean user interface</li>
+        </ul>
+
+        <h2>About the Developer</h2>
+        <p>
+            This is a solo project created for learning and practical implementation.
+        </p>
+
+        <h2>Contact Us</h2>
+
+        <div class="contact-box">
+            <form method="POST">
+                {% csrf_token %}
+
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+
+                <textarea name="message" rows="5" placeholder="Write your message..." required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+
+            <p class="note">
+                You will receive a reply within 5–6 working days.
+            </p>
+        </div>
+
+        <div class="policy">
+            <h2>Privacy Policy</h2>
+            <p>
+                This website does not collect or share personal data except information submitted through the contact
+                form.
+                The data is used only for communication purposes.
+            </p>
+
+            <h2>Terms & Conditions</h2>
+            <p>
+                This platform is for informational purposes only. We do not sell products directly and redirect users to
+                third-party platforms.
+                We are not responsible for external content or transactions.
+            </p>
+        </div>
+    </div>
+     <!--footer-->
+<div class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>BuyLaptop</h3>
+            <p style="color: white;">Find and compare the best laptops easily.</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <p><a href="/">Home</a></p>
+            <p><a href="{% url 'compare' %}">Compare</a></p>
+            <p><a href="{% url 'accessories' %}">Accessories</a></p>
+            <p><a href="{% url 'about' %}">About</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h4 >Top Brands</h4>
+            <p style="color: white;">HP</p>
+            <p style="color: white;">Dell</p>
+            <p style="color: white;">Lenovo</p>
+            <p style="color: white;">ASUS</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 BuyLaptop | All Rights Reserved
+    </div>
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptops</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* 🔹 PRODUCT GRID */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 240px;
+            margin: 12px;
+            padding: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .not-available {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* 🔹 BRAND SECTION */
+        .brand-section {
+            padding: 40px 20px;
+            background: white;
+            margin-top: 40px;
+        }
+
+        .brand-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .brands {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .brand-card {
+            width: 140px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fafafa;
+            transition: 0.3s;
+        }
+
+        .brand-card:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .brand-card p {
+            margin-top: 8px;
+            font-weight: 500;
+        }
+          body {
+            margin: 0;
+            font-family: Arial;
+            background: #f1f3f6;
+        }
+          /* NAVBAR */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #2874f0;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .menu {
+            margin-left: auto;
+        }
+
+        .menu a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        /* Footer Styles */
+ .footer {
+    background: #172337;
+    color: white;
+    padding: 30px 20px 10px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+    </style>
+</head>
+
+<body>
+<div class="navbar">
+    <div class="logo">💻 BuyLaptop</div>
+
+    <div class="menu">
+         <a href="/">Home</a>
+        <a href="{% url 'emi' %}">EMI</a>
+        <a href="{% url 'compare' %}">Compare</a>
+        <a href="{% url 'accessories' %}">Accessories</a>
+        <a href="{% url 'about' %}">About</a>
+    </div>
+</div>
+<h1 style="text-align:center; margin-top:20px;">
+    All laptops of "{{ brand.name }}"
+</h1>
+<!-- 🔹 PRODUCTS -->
+<div class="container">
+
+{% for laptop in laptops %}
+    <div class="card">
+
+        <img src="{{ laptop.image_url }}" alt="{{ laptop.name }}">
+
+        <h4>{{ laptop.name }}</h4>
+        <p>{{ laptop.brand.name }}</p>
+
+        <p class="price">₹{{ laptop.price_min }} - ₹{{ laptop.price_max }}</p>
+
+        <p style="font-size:12px; color:gray;">
+            Prices may vary
+        </p>
+
+        {% if laptop.amazon_url %}
+            <a href="{{ laptop.amazon_url }}" target="_blank">
+                <button>Amazon</button>
+            </a>
+        {% else %}
+            <p class="not-available">Not available on Amazon</p>
+        {% endif %}
+
+        {% if laptop.flipkart_url %}
+            <a href="{{ laptop.flipkart_url }}" target="_blank">
+                <button>Flipkart</button>
+            </a>
+        {% else %}
+            <p class="not-available">Not available on Flipkart</p>
+        {% endif %}
+
+    </div>
+{% endfor %}
+
+</div>
+
+<!-- 🔹 BRAND SECTION (SEPARATE) -->
+<div class="brand-section">
+
+    <div class="brands">
+        {% for brand in brands %}
+        <a href="{% url 'brand' brand.id %}" class="brand-card">
+            <img src="{{ brand.logo_url }}" alt="{{ brand.name }}">
+            <p>{{ brand.name }}</p>
+        </a>
+        {% endfor %}
+    </div>
+
+</div>
+<!-- FOOTER -->
+<div class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>BuyLaptop</h3>
+            <p style="color: white;">Find and compare the best laptops easily.</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <p><a href="/">Home</a></p>
+            <p><a href="{% url 'compare' %}">Compare</a></p>
+            <p><a href="{% url 'accessories' %}">Accessories</a></p>
+            <p><a href="{% url 'about' %}">About</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h4 >Top Brands</h4>
+            <p style="color: white;">HP</p>
+            <p style="color: white;">Dell</p>
+            <p style="color: white;">Lenovo</p>
+            <p style="color: white;">ASUS</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 BuyLaptop | All Rights Reserved
+    </div>
+</body>
+</html>

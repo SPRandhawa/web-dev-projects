@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accessories</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* 🔹 PRODUCT GRID */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 240px;
+            margin: 12px;
+            padding: 12px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card img {
+    width: 100%;
+    height: 180px;          /* fixed height */
+    object-fit: contain;    /* 👈 KEY CHANGE */
+    background: #fff;       /* optional (clean background) */
+    padding: 10px;          /* spacing so image doesn't stick */
+}
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .not-available {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* 🔹 BRAND SECTION */
+        .brand-section {
+            padding: 40px 20px;
+            background: white;
+            margin-top: 40px;
+        }
+
+        .brand-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .brands {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .brand-card {
+            width: 140px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fafafa;
+            transition: 0.3s;
+        }
+
+        .brand-card:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .brand-card p {
+            margin-top: 8px;
+            font-weight: 500;
+        }
+          body {
+            margin: 0;
+            font-family: Arial;
+            background: #f1f3f6;
+        }
+          /* NAVBAR */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #2874f0;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .menu {
+            margin-left: auto;
+        }
+
+        .menu a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: #eee;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background: #2874f0;
+    color: white;
+}
+
+.filter-btn.active {
+    background: #2874f0;
+    color: white;
+    font-weight: bold;
+}
+        /* Footer Styles */
+ .footer {
+    background: #172337;
+    color: white;
+    padding: 30px 20px 10px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <div class="logo">💻 BuyLaptop</div>
+
+    <div class="menu">
+         <a href="/">Home</a>
+        <a href="{% url 'emi' %}">EMI</a>
+        <a href="{% url 'compare' %}">Compare</a>
+        <a href="{% url 'accessories' %}">Accessories</a>
+        <a href="{% url 'about' %}">About</a>
+    </div>
+</div>
+<h1 style="text-align:center; margin:20px;">
+    Accessories
+</h1>
+<div class="filter-bar">
+  
+
+    <a href="{% url 'accessories' %}" 
+       class="filter-btn {% if not selected_type %}active{% endif %}">
+        All
+    </a>
+    <a href="?type=mouse" 
+       class="filter-btn {% if selected_type == 'mouse' %}active{% endif %}">
+        🖱 Mouse
+    </a>
+    <a href="?type=keyboard" 
+       class="filter-btn {% if selected_type == 'keyboard' %}active{% endif %}">
+        ⌨️ Keyboard
+
+    </a>
+    <a href="?type=headphones" 
+       class="filter-btn {% if selected_type == 'headphones' %}active{% endif %}">
+        🎧 Headphones
+    </a>
+    <a href="?type=speaker" 
+       class="filter-btn {% if selected_type == 'speaker' %}active{% endif %}">
+        🔊 Speaker
+    </a>
+    <a href="?type=laptop_bag" 
+       class="filter-btn {% if selected_type == 'laptop_bag' %}active{% endif %}">
+        🎒 Laptop Bag
+    </a>
+    <a href="?type=cooling_pad" 
+       class="filter-btn {% if selected_type == 'cooling_pad' %}active{% endif %}">
+        🌡️ Cooling Pad
+    </a>
+    <a href="?type=webcam" 
+       class="filter-btn {% if selected_type == 'webcam' %}active{% endif %}">
+        📷 Webcam
+    </a>
+    <a href="?type=microphone" 
+       class="filter-btn {% if selected_type == 'microphone' %}active{% endif %}">
+        🎤 Microphone
+    </a>
+    <a href="?type=usb_hub" 
+       class="filter-btn {% if selected_type == 'usb_hub' %}active{% endif %}">
+        🖥️ USB Hub
+    </a>
+    <a href="?type=adapter" 
+       class="filter-btn {% if selected_type == 'adapter' %}active{% endif %}">
+        🌐 Adapter
+    </a>
+    <a href="?type=charger" 
+       class="filter-btn {% if selected_type == 'charger' %}active{% endif %}">
+        🔌 Charger
+    </a>
+    <a href="?type=stand" 
+       class="filter-btn {% if selected_type == 'stand' %}active{% endif %}">
+        🪑 Stand
+    </a>
+    <a href="?type=dock" 
+       class="filter-btn {% if selected_type == 'dock' %}active{% endif %}">
+        🖥️ Docking Station
+    </a>
+    <a href="?type=power_bank" 
+       class="filter-btn {% if selected_type == 'power_bank' %}active{% endif %}">
+        🔋 Power Bank
+    </a>
+    <a href="?type=external_hard_drive" 
+       class="filter-btn {% if selected_type == 'external_hard_drive' %}active{% endif %}">
+        💾 External Hard Drive
+    </a>
+    <a href="?type=stylus_pen" 
+       class="filter-btn {% if selected_type == 'stylus_pen' %}active{% endif %}">
+        ✍️ Stylus Pen
+    </a>
+    <a href="?type=case" 
+       class="filter-btn {% if selected_type == 'case' %}active{% endif %}">
+        🎒 Case
+    </a>
+    <a href="?type=screen_protector" 
+       class="filter-btn {% if selected_type == 'screen_protector' %}active{% endif %}">
+        🛡️ Screen Protector
+    </a>
+    <a href="?type=webcam_cover" 
+       class="filter-btn {% if selected_type == 'webcam_cover' %}active{% endif %}">
+        📷 Webcam Cover
+    </a>
+    <a href="?type=other" 
+       class="filter-btn {% if selected_type == 'other' %}active{% endif %}">
+        🕒 Other
+    </a>
+     
+</div>
+<div class="container">
+
+{% for item in accessories %}
+    <div class="card">
+
+        <img src="{{ item.image_url }}" alt="{{ item.name }}">
+
+        <h4>{{ item.name }}</h4>
+
+        <p style="color:gray;">{{ item.type }}</p>
+
+        <p class="price">₹{{ item.price }}</p>
+
+        {% if item.brand %}
+            <p style="font-size:12px; color:gray;">
+                {{ item.brand }}
+            </p>
+        {% endif %}
+
+    </div>
+{% empty %}
+    <p>No accessories found</p>
+{% endfor %}
+
+</div>
+<!-- FOOTER -->
+<div class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>BuyLaptop</h3>
+            <p style="color: white;">Find and compare the best laptops easily.</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <p><a href="/">Home</a></p>
+            <p><a href="{% url 'compare' %}">Compare</a></p>
+            <p><a href="{% url 'accessories' %}">Accessories</a></p>
+            <p><a href="{% url 'about' %}">About</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h4 >Top Brands</h4>
+            <p style="color: white;">HP</p>
+            <p style="color: white;">Dell</p>
+            <p style="color: white;">Lenovo</p>
+            <p style="color: white;">ASUS</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 BuyLaptop | All Rights Reserved
+    </div>
+</body>
+</html>

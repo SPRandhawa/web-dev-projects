@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buy Laptop</title>
+    <style>
+         body {
+            margin: 0;
+            font-family: Arial;
+            background: #f1f3f6;
+        }
+          /* NAVBAR */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #2874f0;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .search-box {
+    margin-left: 30px;
+}
+
+.search-box input {
+    width: 400px;
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+        .menu {
+            margin-left: auto;
+        }
+
+        .menu a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        /* MARQUEE */
+        .marquee-bar {
+    background: #ffeb3b;
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.marquee-bar marquee {
+    color: black;
+}
+
+
+/* BADGES */
+.badge {
+    padding: 3px 8px;
+    margin-right: 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+}
+
+/* Different badge styles */
+.sale {
+    background: red;
+}
+
+.new {
+    background: green;
+}
+
+.hot {
+    background: orange;
+}
+.info {
+    background: blue;
+}
+.emi {
+    background: purple;
+}
+.compare {
+    background: teal;
+}
+.offer {
+    background: darkorange;
+}
+
+/* TOP SLIDER */
+.top-slider {
+    width: 100%;
+    height:auto;
+    overflow: hidden;
+}
+
+.top-slider .slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* BIG BANNER */
+.big-banner img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    margin: 20px 0;
+}
+
+/* CAROUSEL WRAPPER */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        /* SCROLL AREA */
+        .carousel {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 40px;
+            width: 100%;
+
+            /* Snaps cleanly to the left margin */
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* HIDE SCROLLBAR */
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* EACH CARD */
+        .ccard {
+            /* Fix: Give cards a uniform layout weight and width */
+            width: 320px;
+            height: 450px;
+            flex: 0 0 320px;
+
+            border-radius: 24px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
+            /* Snap to the left start edge */
+            scroll-snap-align: start;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            padding: 30px;
+            position: relative;
+            text-decoration: none;
+            color: #1d1d1f;
+            transition: transform 0.3s ease;
+        }
+
+        .ccard:hover {
+            transform: scale(1.01);
+        }
+
+        /* Card Background Customization Options */
+        .ccard.light-blue { background-color: #e3f2fd; }
+        .ccard.blue-gradient { background-color: #e0f2fe; }
+
+        /* TEXT INSIDE CARD (Top Left Aligned) */
+        .ccard-header h3 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .ccard-header p {
+            font-size: 0.95rem;
+            color: #1d1d1f;
+            margin-bottom: 4px;
+        }
+
+        .ccard-header .price {
+            font-size: 0.85rem;
+            color: #6e6e73;
+        }
+
+        /* IMAGE CONTAINER (Bottom Center Aligned) */
+        .ccard .img-container {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        .ccard img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+       /* LEFT/RIGHT BUTTONS */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* Dark translucent circular styling matching your image */
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 10;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* White text color for the arrow symbol */
+    font-size: 1.1rem;
+    color: #ffffff;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.arrow.left { 
+    left: 15px; 
+}
+
+.arrow.right { 
+    right: 15px; 
+}
+
+/* Disable arrow utility class if limits reached */
+.arrow.disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+      
+/* CATEGORY SECTION */
+.category-section {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.category-card {
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.category-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.category-card:hover {
+    transform: scale(1.1);
+}
+        /* PRODUCT GRID */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 240px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 7px;
+            margin-top: 5px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+.view-all-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.view-all-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #2874f0, #1e5bb8);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.view-all-btn:hover {
+    background: linear-gradient(45deg, #1e5bb8, #2874f0);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+.disabled {
+    background: grey;
+    color: white;
+    cursor: not-allowed;
+}
+.not-available {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+}
+        /* BRAND SECTION */
+        .brand-section {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .brand-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .brands {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .brand-card {
+            width: 190px;
+            height: 160px;
+            margin: 10px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .brand-card:hover {
+            transform: scale(1.05);
+            background: #e8f0fe;
+        }
+
+        .brand-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .brand-card p {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+        /* POPUP */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-box h2 {
+    margin-bottom: 15px;
+}
+
+.popup-box input,
+.popup-box textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON */
+.popup-box button {
+    background: #2874f0;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.popup-box button:hover {
+    background: #1a5ed8;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.popup-box {
+    position: relative;
+}
+/* STAR RATING */
+.star-rating {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    flex-direction: row-reverse;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 25px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star-rating input:checked ~ label {
+    color: gold;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+.review-title {
+    text-align: center;
+    font-size: 32px;
+    margin: 40px 0 20px;
+    font-weight: bold;
+}
+
+.review-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.review-card {
+    width: 260px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-header h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.review-date {
+    font-size: 12px;
+    color: gray;
+}
+
+/* ⭐ Stars */
+.stars {
+    margin: 8px 0;
+}
+
+.star {
+    color: #ccc;
+    font-size: 18px;
+}
+
+.star.filled {
+    color: gold;
+}
+
+/* Comment */
+.review-text {
+    font-size: 14px;
+    color: #444;
+}
+
+.muted {
+    color: #999;
+}
+        /* Footer Styles */
+ .footer {
+    background: #172337;
+    color: white;
+    padding: 30px 20px 10px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 13px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+    max-height: 80vh;   /* 🔥 LIMIT HEIGHT */
+    overflow-y: auto; 
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    gap: 20px;
+}
+
+.modal-body img {
+    width: 300px;
+}
+
+.right {
+    flex: 1;
+}
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">💻 BuyLaptop</div>
+
+    <div class="search-box">
+      <form method="GET" action="{% url 'all_laptops' %}">
+    <input type="text" name="q" placeholder="Search laptops...">
+</form>
+    </div>
+
+    <div class="menu">
+        <a href="{% url 'emi' %}">EMI</a>
+        <a href="{% url 'compare' %}">Compare</a>
+        <a href="{% url 'accessories' %}">Accessories</a>
+        <a href="{% url 'about' %}">About</a>
+    </div>
+</div>
+<!-- MARQUEE -->
+     <div class="marquee-bar">
+    <marquee behavior="scroll" direction="left">
+
+        <span class="badge sale">🔥 SALE</span>
+        Up to 40% OFF on HP & Dell Laptops &nbsp;&nbsp;&nbsp;
+
+        <span class="badge new">🆕 NEW</span>
+        Latest Gaming Laptops Now Available &nbsp;&nbsp;&nbsp;
+
+        <span class="badge hot">⚡ HOT</span>
+        Limited Time Deals — Grab Now! &nbsp;&nbsp;&nbsp;
+
+        <span class="badge info">💻 ACCESSORIES</span>
+        Explore Laptop Bags, Mouse, Keyboards &nbsp;&nbsp;&nbsp;
+
+        <span class="badge emi">💳 EMI</span>
+        Easy EMI Options Available on All Laptops &nbsp;&nbsp;&nbsp;
+
+        <span class="badge compare">📊 COMPARE</span>
+        Compare Laptops Before You Buy &nbsp;&nbsp;&nbsp;
+
+        <span class="badge offer">🎁 OFFER</span>
+        Special Discounts for Students &nbsp;&nbsp;&nbsp;
+
+    </marquee>
+</div>
+<!-- TOP SLIDER -->
+<div class="top-slider">
+    {% for banner in top_sliders %}
+        <div class="slide">
+            <img src="{{ banner.image_url }}">
+        </div>
+    {% endfor %}
+</div>
+<!-- CATEGORY SECTION -->
+<div class="category-section">
+    <h2 style="text-align: center; font-size: 50px; font-weight: bold;">
+        Shop by Category
+    </h2>
+
+    <div class="categories">
+
+    {% for category in categories %}
+    <a href="{% url 'category_laptops' category.id %}">
+        <div class="category-card">
+
+            {% if category.icon_url %}
+                <img src="{{ category.icon_url }}" alt="{{ category.name }}">
+            {% else %}
+                <p>No Image</p>
+            {% endif %}
+
+            <p>{{ category.name }}</p>
+        </div>
+    </a>
+    {% endfor %}
+
+</div>
+</div>
+</div>
+<!-- PRODUCTS -->
+<h2 style="text-align: center; font-size: 50px; font-weight: bold;">Latest Laptops</h2>
+
+<div class="container">
+
+{% for laptop in laptops %}
+
+<div class="card"
+onclick="openModal(
+'{{ laptop.image_url }}',
+'{{ laptop.name|escapejs }}',
+'{{ laptop.brand.name|escapejs }}',
+'₹{{ laptop.price_min }} - ₹{{ laptop.price_max }}'
+)">
+    
+    <img src="{{ laptop.image_url }}" alt="Laptop">
+
+    <h4>{{ laptop.name }}</h4>
+    <p>{{ laptop.brand.name }}</p>
+
+    <p class="price">₹{{ laptop.price_min }} - ₹{{ laptop.price_max }}</p>
+
+    <p style="font-size:12px; color:gray;">
+        Prices may vary
+    </p>
+
+    {% if laptop.amazon_url %}
+        <a href="{{ laptop.amazon_url }}" target="_blank">
+            <button>Amazon</button>
+        </a>
+    {% else %}
+        <p class="not-available">Not available on Amazon</p>
+    {% endif %}
+
+    {% if laptop.flipkart_url %}
+        <a href="{{ laptop.flipkart_url }}" target="_blank">
+            <button>Flipkart</button>
+        </a>
+    {% else %}
+        <p class="not-available">Not available on Flipkart</p>
+    {% endif %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- ✅ MODAL (ONLY ONE, OUTSIDE LOOP) -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">❌</span>
+
+        <img id="modal-img" style="width:250px;">
+
+        <h2 id="modal-name"></h2>
+        <p id="modal-brand"></p>
+        <p id="modal-price"></p>
+
+        <div id="modal-specs"></div>
+
+    </div>
+</div>
+    <div class="view-all-container">
+    <a href="{% url 'all_laptops' %}" class="view-all-btn">
+        View All Laptops →
+    </a>
+    </div>
+</div></div>
+<br>
+<div class="bigbanner-section">
+   {% if big_banner %}
+<div class="big-banner">
+    <img src="{{ big_banner.image_url }}">
+</div>
+{% endif %}
+
+</div>
+<!-- FEATURED LAPTOPS -->
+<div class="featured-section">
+    <h2 style="text-align: center; font-size: 50px; font-weight: bold;">Featured Laptops</h2>
+
+    <div class="container">
+        {% for laptop in featured_laptops %}
+        <div class="card">
+            <img src="{{ laptop.image_url }}">
+
+            <h4>{{ laptop.name }}</h4>
+            <p>{{ laptop.brand.name }}</p>
+
+            <p class="price">₹{{ laptop.price_min }} - ₹{{ laptop.price_max }}</p>
+
+            <a href="{{ laptop.amazon_url }}" target="_blank">
+                <button>Amazon</button>
+            </a>
+
+            <a href="{{ laptop.flipkart_url }}" target="_blank">
+                <button>Flipkart</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+ <h2 style="text-align: center; font-size: 50px; font-weight: bold;">Important Accessories</h2>
+   <div class="carousel-container">
+
+    <button class="arrow left" onclick="scrollCarousel(-1)">&#10094;</button>
+
+    <div class="carousel" id="carouselTrack">
+        {% for banner in carousel_banners %}
+        <div class="ccard">
+            
+            {% if banner.title %}
+            <div class="ccard-header">
+                <h3>{{ banner.title }}</h3>
+            </div>
+            {% endif %}
+            
+            <div class="cimg-container">
+                {% if banner.link %}
+                    <a href="{{ banner.link }}">
+                        <img src="{{ banner.image_url }}" alt="{{ banner.title }}">
+                    </a>
+                {% else %}
+                    <img src="{{ banner.image_url }}" alt="{{ banner.title }}">
+                {% endif %}
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <button class="arrow left" onclick="scrollCarousel(-1)">&#10094;</button>
+
+     <button class="arrow right" onclick="scrollCarousel(1)">&#10095;</button>
+
+</div>
+    <!-- BEST SELLING LAPTOPS -->
+    <h2 style="text-align: center; font-size: 50px; font-weight: bold;">🔥 Best Selling Laptops</h2>
+
+    <div class="container">
+        {% for laptop in best_selling %}
+        <div class="card">
+            <img src="{{ laptop.image_url }}">
+            <h4>{{ laptop.name }}</h4>
+            <p>{{ laptop.brand.name }}</p>
+            <p class="price">₹{{ laptop.price_min }} - ₹{{ laptop.price_max }}</p>
+
+            <a href="{{ laptop.amazon_url }}" target="_blank">
+                <button>Amazon</button>
+            </a>
+
+            <a href="{{ laptop.flipkart_url }}" target="_blank">
+                <button>Flipkart</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- BRAND SECTION -->
+<div class="brand-section">
+    <div style="text-align: center; font-size: 50px; font-weight: bold;" class="brand-title">Shop by Brand</div>
+
+    <div class="brands">
+        {% for brand in brands %}
+         <a href="{% url 'brand' brand.id %}" class="brand-card">
+            <img src="{{ brand.logo_url }}" alt="{{ brand.name }}">
+            <p>{{ brand.name }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<div id="reviewPopup" class="popup-overlay">
+
+    <div class="popup-box">
+  <!-- ❌ CLOSE BUTTON -->
+    <span class="close-btn" onclick="closePopup()">✖</span>
+        <h2>Share Your Experience</h2>
+
+        <form method="POST" action="/submit-review/">
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="Your Name" required>
+
+            <!-- ⭐ STAR RATING -->
+            <div class="star-rating">
+                <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
+                <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
+                <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
+                <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
+                <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
+            </div>
+
+            <!-- COMMENT -->
+            <textarea name="comment" placeholder="Write your review..." required></textarea>
+
+            <button type="submit">Submit Review</button>
+        </form>
+
+    </div>
+
+</div>
+<h2 class="review-title">User Reviews</h2>
+
+<div class="review-container">
+    {% for review in reviews %}
+    <div class="review-card">
+
+        <div class="review-header">
+            <h4>{{ review.name }}</h4>
+            <span class="review-date">{{ review.created_at|date:"d M Y" }}</span>
+        </div>
+
+        <!-- ⭐ STARS -->
+        <div class="stars">
+            {% for i in "12345" %}
+                {% if forloop.counter <= review.rating %}
+                    <span class="star filled">★</span>
+                {% else %}
+                    <span class="star">★</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- COMMENT -->
+        {% if review.comment %}
+            <p class="review-text">{{ review.comment }}</p>
+        {% else %}
+            <p class="review-text muted">No comment provided.</p>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>
+    <!--footer-->
+<div class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>BuyLaptop</h3>
+            <p>Find and compare the best laptops easily.</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <p><a href="/">Home</a></p>
+            <p><a href="{% url 'compare' %}">Compare</a></p>
+            <p><a href="{% url 'accessories' %}">Accessories</a></p>
+            <p><a href="{% url 'about' %}">About</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Top Brands</h4>
+            <p>HP</p>
+            <p>Dell</p>
+            <p>Lenovo</p>
+            <p>ASUS</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 BuyLaptop | All Rights Reserved
+    </div>
+
+</div>
+    </body>
+   <script>
+    let index = 0;
+const slides = document.querySelectorAll(".top-slider .slide");
+
+function showSlide() {
+    slides.forEach((s, i) => {
+        s.style.display = (i === index) ? "block" : "none";
+    });
+
+    index = (index + 1) % slides.length;
+}
+
+setInterval(showSlide, 3000);
+showSlide();
+  function scrollCarousel(direction) {
+    // Falls back gracefully if you name it "carousel" or "carouselTrack"
+    const carousel = document.getElementById("carousel") || document.getElementById("carouselTrack");
+    
+    if (!carousel) {
+        console.error("Carousel container element not found in DOM.");
+        return;
+    }
+
+    // 1. Grab the actual width of a single card
+    const card = carousel.querySelector('.card');
+    
+    // Safety check: if cards aren't fully rendered yet, fallback to a standard step
+    let scrollStep = 344; // Default fallback width (320px card + 24px gap)
+
+    if (card) {
+        const cardWidth = card.getBoundingClientRect().width;
+        // 2. Add the layout gap (matching your CSS layout)
+        scrollStep = cardWidth + 24; 
+    }
+    
+    // 3. Scroll exactly one full card width at a time
+    carousel.scrollBy({
+        left: direction * scrollStep,
+        behavior: "smooth"
+    });
+}
+setTimeout(function() {
+    document.getElementById("reviewPopup").style.display = "flex";
+}, 300000); // 5 minutes = 300000 ms
+function closePopup() {
+    document.getElementById("reviewPopup").style.display = "none";}
+
+
+
+// =============================
+// 📊 COMPARISON DATA FROM DJANGO
+// =============================
+let comparisons = [
+{% for c in comparisons %}
+{
+    name: "{{ c.name|escapejs }}",
+    ram: "{{ c.ram }}",
+    ssd: "{{ c.ssd }}",
+    processor: "{{ c.processor }}",
+    display: "{{ c.display }}",
+    battery: "{{ c.battery }}",
+    gpu: "{{ c.gpu }}"
+},
+{% endfor %}
+];
+
+
+// =============================
+// 🔍 NORMALIZE TEXT
+// =============================
+function normalize(s) {
+    return (s || "").toString().trim().toLowerCase();
+}
+
+
+// =============================
+// 🧠 OPEN MODAL (FINAL WORKING)
+// =============================
+function openModal(img, name, brand, price) {
+
+    document.getElementById("modal").style.display = "flex";
+
+    document.getElementById("modal-img").src = img;
+    document.getElementById("modal-name").innerText = name;
+    document.getElementById("modal-brand").innerText = brand;
+    document.getElementById("modal-price").innerText = price;
+
+    let normName = normalize(name);
+
+    let match =
+        comparisons.find(c => normalize(c.name) === normName) ||
+        comparisons.find(c => normalize(c.name).includes(normName)) ||
+        comparisons.find(c => normName.includes(normalize(c.name)));
+
+    if (match) {
+        document.getElementById("modal-specs").innerHTML = `
+            <p><b>RAM:</b> ${match.ram || "N/A"}</p>
+            <p><b>SSD:</b> ${match.ssd || "N/A"}</p>
+            <p><b>Processor:</b> ${match.processor || "N/A"}</p>
+            <p><b>Display:</b> ${match.display || "N/A"}</p>
+            <p><b>Battery:</b> ${match.battery || "N/A"}</p>
+            <p><b>GPU:</b> ${match.gpu || "N/A"}</p>
+        `;
+    } else {
+        document.getElementById("modal-specs").innerHTML = `
+            <p>Specs not available</p>
+        `;
+    }
+}
+
+
+// =============================
+// ❌ CLOSE MODAL
+// =============================
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

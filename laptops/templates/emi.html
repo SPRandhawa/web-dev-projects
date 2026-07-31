@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMI Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            margin: 0;
+        }
+ /* NAVBAR */
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: #2874f0;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .menu {
+            margin-left: auto;
+        }
+
+        .menu a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2874f0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: #2874f0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1a5ed8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f3f6;
+            border-left: 4px solid #2874f0;
+            border-radius: 5px;
+        }
+         /* Footer Styles */
+ .footer {
+    background: #172337;
+    color: white;
+    padding: 30px 20px 10px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+    </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">💻 BuyLaptop</div>
+
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="{% url 'emi' %}">EMI</a>
+            <a href="{% url 'compare' %}">Compare</a>
+            <a href="{% url 'accessories' %}">Accessories</a>
+            <a href="{% url 'about' %}">About</a>
+        </div>
+    </div>
+
+<div class="container">
+
+    <h2>💰 EMI Calculator</h2>
+
+    <label>Loan Amount (₹)</label>
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <label>Interest Rate (%)</label>
+    <input type="number" id="rate" placeholder="Annual interest rate">
+
+    <label>Time (Months)</label>
+    <input type="number" id="time" placeholder="Loan duration">
+
+    <button onclick="calculateEMI()">Calculate EMI</button>
+
+    <div class="result" id="result" style="display:none;"></div>
+
+</div>
+ <!--footer-->
+<div class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>BuyLaptop</h3>
+            <p>Find and compare the best laptops easily.</p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <p><a href="/">Home</a></p>
+            <p><a href="{% url 'compare' %}">Compare</a></p>
+            <p><a href="{% url 'accessories' %}">Accessories</a></p>
+            <p><a href="{% url 'about' %}">About</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Top Brands</h4>
+            <p>HP</p>
+            <p>Dell</p>
+            <p>Lenovo</p>
+            <p>ASUS</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 BuyLaptop | All Rights Reserved
+    </div>
+
+</div>
+<script>
+function calculateEMI() {
+    let P = document.getElementById("amount").value;
+    let R = document.getElementById("rate").value / 12 / 100;
+    let N = document.getElementById("time").value;
+
+    if (P === "" || R === "" || N === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let EMI = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+    EMI = EMI.toFixed(2);
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML =
+        "<b>Monthly EMI:</b> ₹ " + EMI;
+}
+</script>
+
+</body>
+</html>
