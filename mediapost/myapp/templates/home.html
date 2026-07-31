@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+<section class="container py-3 py-lg-4">
+    <div class="hero-section rounded-4 p-4 p-lg-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <span class="badge rounded-pill bg-white bg-opacity-25 px-3 py-2 mb-3">Share your moments</span>
+                <h1 class="display-5 fw-bold mb-3">Welcome to MediaPost</h1>
+                <p class="lead text-white-50 mb-4">Create polished posts, share your memories, and connect with a community through a modern experience.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'post_create' %}" class="btn btn-light text-primary">Create your post</a>
+                    <a href="{% url 'post_list' %}" class="btn btn-outline-light">View all posts</a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="panel-card p-4">
+                    <h3 class="fw-bold mb-3">Why people love MediaPost</h3>
+                    <ul class="list-unstyled mb-0 text-muted">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Elegant posting experience</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Beautiful card layouts</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Fast editing and deletion controls</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container pb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="h3 fw-bold mb-1">Recent Posts</h2>
+            <p class="text-muted mb-0">Fresh stories from the community</p>
+        </div>
+        <a href="{% url 'post_list' %}" class="btn btn-outline-light">View All</a>
+    </div>
+
+    {% if posts %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for post in posts %}
+        <div class="col">
+            <div class="card h-100 border-0 content-card card-hover overflow-hidden">
+                {% if post.photo %}
+                <img src="{{ post.photo.url }}" class="card-img-top post-image" alt="{{ post.user.username }} post">
+                {% else %}
+                <div class="placeholder-box m-3">
+                    <div class="text-center">
+                        <i class="bi bi-image fs-1"></i>
+                        <p class="mb-0 mt-2">No image available</p>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title fw-bold mb-0">{{ post.user.username }}</h5>
+                        <span class="badge rounded-pill bg-light text-dark">{{ post.created_at|date:"M d, Y" }}</span>
+                    </div>
+                    <p class="card-text text-muted flex-grow-1">{{ post.text }}</p>
+                    {% if user.is_authenticated and post.user == user %}
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="{% url 'post_edit' post.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a href="{% url 'post_delete' post.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="content-card p-4" role="status">
+        <p class="mb-0 text-muted">No posts available yet. Be the first to share something amazing.</p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}My Django Project{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="content-card p-4 p-lg-5 text-center">
+        <h1 class="fw-bold mb-3">Welcome to your dashboard</h1>
+        <p class="text-muted mb-4">A polished space to manage your posts and continue sharing your story.</p>
+        <a href="{% url 'post_list' %}" class="btn btn-primary">Explore posts</a>
+    </div>
+</section>
+{% endblock %}

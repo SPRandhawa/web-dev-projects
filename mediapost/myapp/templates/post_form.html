@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Post Form{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="auth-card p-4 p-lg-5">
+                <div class="mb-4">
+                    <h1 class="fw-bold mb-2">
+                        {% if form_.instance.pk %}Edit Post{% else %}Create a New Post{% endif %}
+                    </h1>
+                    <p class="text-muted mb-0">Share your story with a polished, professional layout.</p>
+                </div>
+
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_text" class="form-label">Post content</label>
+                        <textarea name="text" id="id_text" class="form-control" rows="6" required>{{ form_.text.value|default_if_none:'' }}</textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="id_photo" class="form-label">Photo</label>
+                        <input type="file" name="photo" class="form-control" id="id_photo">
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{% url 'post_list' %}" class="btn btn-outline-light">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

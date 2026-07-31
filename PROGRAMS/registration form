@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Registration Form (50+ Countries)</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    }
+
+    .container {
+        width: 400px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+
+    label {
+        font-size: 13px;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 9px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+
+    input:focus, select:focus {
+        border-color: #5b86e5;
+    }
+
+    .phone-box {
+        display: flex;
+    }
+
+    .code {
+        width: 100px;
+        text-align: center;
+        background: #f1f1f1;
+        padding: 9px;
+        border-radius: 8px 0 0 8px;
+        border: 1px solid #ccc;
+        border-right: none;
+    }
+
+    .phone-box input {
+        border-radius: 0 8px 8px 0;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #5b86e5;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #486fd1;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+
+    .success {
+        text-align: center;
+        margin-top: 10px;
+        color: green;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form id="form">
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="name">
+            <div class="error" id="nameErr"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" id="email">
+            <div class="error" id="emailErr"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <select id="gender">
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Nationality</label>
+            <select id="nationality" onchange="setCode()">
+                <option value="">Select Country</option>
+                <option value="IN">India</option>
+                <option value="US">USA</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="AE">UAE</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+                <option value="IT">Italy</option>
+                <option value="ES">Spain</option>
+                <option value="BR">Brazil</option>
+                <option value="MX">Mexico</option>
+                <option value="JP">Japan</option>
+                <option value="CN">China</option>
+                <option value="KR">South Korea</option>
+                <option value="RU">Russia</option>
+                <option value="ZA">South Africa</option>
+                <option value="NG">Nigeria</option>
+                <option value="EG">Egypt</option>
+                <option value="PK">Pakistan</option>
+                <option value="BD">Bangladesh</option>
+                <option value="LK">Sri Lanka</option>
+                <option value="NP">Nepal</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="TR">Turkey</option>
+                <option value="ID">Indonesia</option>
+                <option value="MY">Malaysia</option>
+                <option value="SG">Singapore</option>
+                <option value="NZ">New Zealand</option>
+                <option value="SE">Sweden</option>
+                <option value="NO">Norway</option>
+                <option value="FI">Finland</option>
+                <option value="DK">Denmark</option>
+                <option value="NL">Netherlands</option>
+                <option value="BE">Belgium</option>
+                <option value="CH">Switzerland</option>
+                <option value="AT">Austria</option>
+                <option value="GR">Greece</option>
+                <option value="PT">Portugal</option>
+                <option value="PL">Poland</option>
+                <option value="UA">Ukraine</option>
+                <option value="IR">Iran</option>
+                <option value="IQ">Iraq</option>
+                <option value="AR">Argentina</option>
+                <option value="CL">Chile</option>
+                <option value="CO">Colombia</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" id="age">
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <div class="phone-box">
+                <div class="code" id="code">+__</div>
+                <input type="text" id="phone" placeholder="Enter number">
+            </div>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <div class="success" id="success"></div>
+    </form>
+</div>
+
+<script>
+    const codes = {
+        IN:"+91", US:"+1", CA:"+1", UK:"+44", AU:"+61", AE:"+971",
+        FR:"+33", DE:"+49", IT:"+39", ES:"+34", BR:"+55", MX:"+52",
+        JP:"+81", CN:"+86", KR:"+82", RU:"+7", ZA:"+27", NG:"+234",
+        EG:"+20", PK:"+92", BD:"+880", LK:"+94", NP:"+977", SA:"+966",
+        TR:"+90", ID:"+62", MY:"+60", SG:"+65", NZ:"+64", SE:"+46",
+        NO:"+47", FI:"+358", DK:"+45", NL:"+31", BE:"+32", CH:"+41",
+        AT:"+43", GR:"+30", PT:"+351", PL:"+48", UA:"+380",
+        IR:"+98", IQ:"+964", AR:"+54", CL:"+56", CO:"+57"
+    };
+
+    function setCode(){
+        let nat = document.getElementById("nationality").value;
+        document.getElementById("code").innerText = codes[nat] || "+__";
+    }
+
+    document.getElementById("form").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        document.getElementById("success").innerText = "";
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let age = document.getElementById("age").value;
+        let phone = document.getElementById("phone").value;
+
+        let ok = true;
+
+        if(!name || !email || !age || !phone){
+            document.getElementById("success").innerText = "Please fill all fields!";
+            ok = false;
+        }
+
+        if(ok){
+            document.getElementById("success").innerText = "Registration Successful!";
+            document.getElementById("form").reset();
+            document.getElementById("code").innerText = "+__";
+        }
+    });
+</script>
+
+</body>
+</html>
